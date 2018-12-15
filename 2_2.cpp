@@ -14,21 +14,18 @@ int main()
        inputAsList.push_back(eachLineOfInput);
        sizeOfInputAsList++;
     }
-    for (int i = 0; i < sizeOfInputAsList && foundRedundant == false; ++i)
+    for (int i = 0; i < sizeOfInputAsList-1 && foundRedundant == false; ++i)
     {
-        for (int j = 0; j < sizeOfInputAsList && foundRedundant == false; ++j)
+        for (int j = i+1; j < sizeOfInputAsList && foundRedundant == false; ++j)
         {
-            if (i!=j)
+            if( checkPattern(inputAsList[i],inputAsList[j]) )
             {
-                if( checkPattern(inputAsList[i],inputAsList[j]) )
+                foundRedundant = true;
+                for (int k = 0; k < inputAsList[i].size(); ++k)
                 {
-                    foundRedundant = true;
-                    for (int k = 0; k < inputAsList[i].size(); ++k)
+                    if ( inputAsList[i][k] == inputAsList[j][k] )
                     {
-                        if ( inputAsList[i][k] == inputAsList[j][k] )
-                        {
-                            cout<<inputAsList[i][k];
-                        }
+                        cout<<inputAsList[i][k];
                     }
                 }
             }
